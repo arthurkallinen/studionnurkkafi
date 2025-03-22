@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arthur Kallinen</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .laura-hover {
+            position: relative;
+        }
+
+        .laura-popup {
+            display: none;
+            position: absolute;
+            top: 110%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #001f3f;
+            padding: 8px 10px;
+            border-radius: 6px;
+            text-align: center;
+            white-space: nowrap;
+            z-index: 1000;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .laura-hover:hover .laura-popup {
+            display: block;
+        }
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(180% 180% at 100% 100%, #000E2C 40%, #005073 85%);
+            min-height: 100vh;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .left-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            align-self: center;
+            margin-top: 60px;
+        }
+
+        .left-caption {
+            font-size: 0.9em;
+            color: #CCC;
+            font-style: italic;
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .text-container {
+            text-align: center;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        h1 {
+            font-family: 'Segoe UI Black';
+            font-size: 3em;
+            margin-bottom: 5px;
+        }
+
+        h3 {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+
+        p {
+            line-height: 1.4;
+            font-size: 1.1em;
+        }
+
+        .image-container {
+            width: 350px;
+            height: 350px;
+            border-radius: 40%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .content-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 1200px;
+            position: relative;
+            flex-wrap: wrap;
+            gap: 60px;
+        }
+
+        .links-container {
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 1.1em;
+            text-transform: uppercase;
+            margin-top: 40px;
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            text-align-last: justify;
+        }
+
+        .links-container a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: underline;
+        }
+
+        footer {
+            width: 100%;
+            padding: 10px 0;
+            background-color: transparent;
+            color: #ddd;
+            margin-top: auto;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @media (max-width: 1024px) {
+            .left-column {
+                margin-top: 0px;
+            }
+
+            .links-container {
+                width: 87%;
+                font-size: 1em;
+                max-width: 550px;
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+            }
+
+            .text-container {
+                max-width: 100%;
+                width: 90%;
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+                margin-bottom: 6px;
+            }
+
+            header {
+                text-align: center;
+            }
+
+            h1 {
+                font-size: 2em;
+                margin-left: 0;
+                margin-right: 0;
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            h3 {
+                font-size: 1.5em;
+                margin-left: 0;
+                margin-right: 0;
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            p {
+                text-align: center;
+                padding-left: 0;
+                font-size: 0.9em;
+            }
+
+            .content-container {
+                margin-top: 5%;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .image-container {
+                width: 225px;
+                height: 225px;
+            }
+        }
+
+        .page-wrapper {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            width: 100%;
+        }
+
+        .content-wrapper {
+            display: flex;
+            min-height: 87vh;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .social-hover:hover .social-popup {
+            opacity: 0;
+            display: block;
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        .social-hover {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .social-popup {
+            display: none;
+            position: absolute;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #001f3f;
+            padding: 8px 10px;
+            border-radius: 6px;
+            white-space: nowrap;
+            z-index: 1000;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .social-popup a {
+            margin: 0 5px;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+
+        .social-hover.active .social-popup {
+            display: block;
+        }
+    .laura-hover.active .laura-popup {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+</style>
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <div class="content-wrapper">
+            <div class="content-container">
+
+                <div class="left-column">
+                    <div class="image-container">
+                        <img src="https://kallinen.my.canva.site/_assets/media/6fc2c8f78a9bc05bed28c24b82a93813.jpg"
+                            alt="Arthur Kallinen">
+                    </div>
+                    <div class="left-caption">
+  Photo by Laura Manninen / <span class="laura-hover" style="text-decoration: underline; cursor: pointer;"><a href="https://laurafilmaa.com/" target="_blank" style="color: inherit; text-decoration: inherit;">laurafilmaa</a><span class="laura-popup">
+  <a href="https://www.instagram.com/laurafilmaa/" target="_blank"><img src="https://images.squarespace-cdn.com/content/v1/5c23a11431d4dfe2660cf4e8/0fedc245-aec1-4a6b-9e44-50c2641d0c1f/laura.jpg?format=2500w" alt="Laura Manninen" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%; display: block; margin: 0 auto 5px;"></a>
+  <a href="https://www.instagram.com/laurafilmaa/" target="_blank" style="color: white; text-decoration: none;">@laurafilmaa</a>
+</span></span>, 2024
+</div>
+                </div>
+
+                <div class="text-container">
+                    <header>
+                        <h1>Arthur “AK” Kallinen</h1>
+                        <h3>Kuvaaja, videon moniosaaja</h3>
+                    </header>
+                    <section>
+                        <p>Kuvaukset perinteisin kameroin, roboilla sekä dronella.<br>
+                            Myös: striimailu, valaisu, valokuvaus sekä tapahtumateknikointi.</p>
+                        <p>Omaa kuvauskalustoa mm. Sony FX6 & A7IV.</p>
+                        <p>Somessa: <span class="social-hover" style="text-decoration: underline;"
+                                onclick="togglePopup(event)">@arthurkallinen<span class="social-popup">
+                                     <!--
+                                    <a href='https://open.spotify.com/user/31wileackyr36pzedx3kq4wtjppa?nd=1&dlsi=81b32f3774a641de' target='_blank' title='Spotify'><img src='https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/spotify.svg' alt='Spotify' width='20' style='filter: invert(1);'></a>
+                                    <a href='https://fi.pinterest.com/arthurkallinen/' target='_blank' title='Pinterest'><img src='https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/pinterest.svg' alt='Pinterest' width='20' style='filter: invert(1);'></a>
+                                    <a href='https://www.flickr.com/people/198503461@N07/' target='_blank' title='Flickr'><img src='https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/flickr.svg' alt='Flickr' width='20' style='filter: invert(1);'></a>
+                                    -->
+                                    <a href='https://www.facebook.com/arthurkallinen' target='_blank' title='Facebook'><img src='https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg' alt='Facebook' width='20' style='filter: invert(1);'></a>
+                                    <a href='https://www.instagram.com/arthurkallinen' target='_blank' title='Instagram'><img src='https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg' alt='Instagram' width='20' style='filter: invert(1);'></a>
+                                    <a href='https://www.youtube.com/arthurkallinen' target='_blank' title='YouTube'><img src='https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/youtube.svg' alt='YouTube' width='20' style='filter: invert(1);'></a>
+                                    <a href='https://vimeo.com/user107176006' target='_blank' title='Vimeo'><img src='https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/vimeo.svg' alt='Vimeo' width='20' style='filter: invert(1);'></a>
+                                    
+                                    <a href='https://linkedin.com/in/arthurkallinen' target='_blank' title='LinkedIn'><img src='https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg' alt='LinkedIn' width='20' style='filter: invert(1);'></a>
+                                    <a href='https://www.tiktok.com/@arthurkallinen_' target='_blank' title='TikTok'><img src='https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/tiktok.svg' alt='TikTok' width='20' style='filter: invert(1);'></a>
+                                    <a href='https://twitter.com/arthurkallinen' target='_blank' title='Twitter'><img src='https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/x.svg' alt='Twitter X' width='20' style='filter: invert(1);'></a>
+                                    <!--
+                                    <a href='https://github.com/arthurkallinen' target='_blank' title='GitHub'><img src='https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg' alt='GitHub' width='20' style='filter: invert(1);'></a>
+                                    <a href='https://www.tumblr.com/arthurkallinen' target='_blank' title='Tumblr'><img src='https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/tumblr.svg' alt='Tumblr' width='20' style='filter: invert(1);'></a>
+                                    -->
+                                </span></span></p>
+                        <p>Parhaiten tavoitettavissa WhatsApp/SMS / Email:<br>
+                            +358503505671 / arthur@akfilm.it</p>
+                    </section>
+                    <div class="links-container">
+                        <a href="https://studionnurkka.fi/" target="_blank">Studio</a>
+                        <a href="https://akfilmit.kuvat.fi/" target="_blank">Portfolio</a>
+                        <a href="https://cv.akfilm.it/" target="_blank">CV</a>
+                        <a href="https://www.imdb.com/name/nm10712370/" target="_blank">IMDB</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy;
+                <script>document.write(/\d{4}/.exec(Date())[0])</script> - Arthur Kallinen
+            </p>
+        </footer>
+    </div>
+
+    <script>
+
+
+
+      
+        function togglePopup(event) {
+            event.stopPropagation();
+            const popup = event.currentTarget;
+            document.querySelectorAll('.social-hover').forEach(el => {
+                if (el !== popup) el.classList.remove('active');
+            });
+            popup.classList.toggle('active');
+        }
+
+        document.addEventListener('click', () => {
+            document.querySelectorAll('.social-hover').forEach(el => el.classList.remove('active'));
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const hoverTarget = document.querySelector('.social-hover');
+            if (!hoverTarget) return;
+
+            const popup = hoverTarget.querySelector('.social-popup');
+            let showTimeout, hideTimeout;
+
+            hoverTarget.addEventListener('mouseenter', () => {
+                clearTimeout(hideTimeout);
+                showTimeout = setTimeout(() => {
+                    popup.style.opacity = '1';
+                    popup.style.visibility = 'visible';
+                    popup.style.display = 'block';
+                }, 0); // Delay before showing on hover
+            });
+
+            hoverTarget.addEventListener('mouseleave', () => {
+                clearTimeout(showTimeout);
+                hideTimeout = setTimeout(() => {
+                    popup.style.opacity = '0';
+                    popup.style.visibility = 'hidden';
+                    popup.style.display = 'none';
+                }, 200); // Delay before hiding on mouse leave
+            });
+        });
+    </script>
+</body>
+
+</html>
